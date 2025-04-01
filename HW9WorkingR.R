@@ -1,3 +1,4 @@
+
 # HW 9
 #Load Tidyverse
 library(tidyverse)
@@ -18,8 +19,6 @@ dat.precip.long <- dat.precip |>
                                    TRUE                 ~ Precipitation))|>
   mutate(Precipitation = as.numeric(Precipitation)) |>
   filter(!is.na(Precipitation))  # Remove rows with NA values
-
-
 
 #########################################################################################################
 
@@ -100,10 +99,8 @@ loglik_weibull <- -MLEs$value # Calculate loglik_weibull
 
 (Q.WG = exp(loglik_weibull - loglik_gamma))
 
-# Since the likelihood ratio comparing the Weibull and the Gamma distribution is less than one, it indicates that
-# the Weibull distibution is a better fit than the Gamme distibution
-
-
+"Since the likelihood ratio comparing the Weibull and the Gamma distribution is less than one, it indicates that
+ the Gamma distibution is a better fit than the Gamme distibution"
 
 #########################################################################################################
 
@@ -112,9 +109,8 @@ Which has a better fit according to the likelihood ratio?"
 
 (Q.WLG = exp(loglik_weibull - loglik_lognormal))
 
-# Since the likelihood ratio comparing the Weibull and the Gamma distribution is greater than one, it indicates that
-# the Weibull distibution is a better fit than the Log-normal distibution.
-
+"Since the likelihood ratio comparing the Weibull and the Log-normal distribution is greater than one, it indicates that
+ the Weibull distibution is a better fit than the Log-normal distibution"
 
 #########################################################################################################
 
@@ -123,9 +119,5 @@ Which has a better fit according to the likelhiood ratio?"
 
 (Q.GLG = exp(loglik_gamma - loglik_lognormal))
 
-# Since the likelihood ratio comparing the Gamma and the Log-normal distribution is greater than one, it indicates that
-# the Gamma distibution is a better fit than the Log-normal distibution.
-
-
-
-
+"Since the likelihood ratio comparing the Gamma and the Log-normal distribution is greater than one, it indicates that
+ the Gamma distibution is a better fit than the Log-normal distibution"
