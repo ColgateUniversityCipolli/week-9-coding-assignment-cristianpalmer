@@ -37,10 +37,10 @@ llgamma <- function(data, par, neg=F){
                fn = llgamma,
                data=dat.precip.long$Precipitation,
                neg=T))
-alpha.hat.mle <- mles$par[1]
-beta.hat.mle <- mles$par[2]
+(alpha.hat.mle <- mles$par[1])
+(beta.hat.mle <- mles$par[2])
 
-loglik_gamma <- -mles$value # Calculate loglik_gamma
+(loglik_gamma <- -mles$value) # Calculate loglik_gamma
 
 #########################################################################################################
 
@@ -60,10 +60,10 @@ lllognormal <- function(data, par, neg=F) {
                data=dat.precip.long$Precipitation,
                neg=T))
 
-meanlog.hat.mle <- mles$par[1]
-sdlog.hat.mle <- mles$par[2]
+(meanlog.hat.mle <- mles$par[1])
+(sdlog.hat.mle <- mles$par[2])
 
-loglik_lognormal <- -mles$value # Calculate loglik_lognormal
+(loglik_lognormal <- -mles$value) # Calculate loglik_lognormal
 
 #########################################################################################################
 
@@ -92,7 +92,7 @@ MLEs <- optim(fn = llweibull,
 
 (MLEs$par <- exp(MLEs$par)) # transform
 
-loglik_weibull <- -MLEs$value # Calculate loglik_weibull
+(loglik_weibull <- -MLEs$value) # Calculate loglik_weibull
 ##########################################
 
 # Compute the likelihood ratio to compare the Weibull and the Gamma distribution
@@ -100,24 +100,22 @@ loglik_weibull <- -MLEs$value # Calculate loglik_weibull
 (Q.WG = exp(loglik_weibull - loglik_gamma))
 
 "Since the likelihood ratio comparing the Weibull and the Gamma distribution is less than one, it indicates that
- the Gamma distibution is a better fit than the Gamme distibution"
+ the Gamma distribution is a better fit than the Weibull distribution"
 
 #########################################################################################################
 
-"(1.d)  Compute the likelihood ratio to compare the Weibull and the Log-Normal distribution.  
-Which has a better fit according to the likelihood ratio?"
+# "(1.d)  Compute the likelihood ratio to compare the Weibull and the Log-Normal distribution.  
 
 (Q.WLG = exp(loglik_weibull - loglik_lognormal))
 
 "Since the likelihood ratio comparing the Weibull and the Log-normal distribution is greater than one, it indicates that
- the Weibull distibution is a better fit than the Log-normal distibution"
+ the Weibull distribution is a better fit than the Log-normal distribution"
 
 #########################################################################################################
 
-"(1.e)  Compute the likelihood ratio to compare the Gamma and the Log-Normal distribution.  
-Which has a better fit according to the likelhiood ratio?"
+# "(1.e)  Compute the likelihood ratio to compare the Gamma and the Log-Normal distribution.  
 
 (Q.GLG = exp(loglik_gamma - loglik_lognormal))
 
 "Since the likelihood ratio comparing the Gamma and the Log-normal distribution is greater than one, it indicates that
- the Gamma distibution is a better fit than the Log-normal distibution"
+ the Gamma distribution is a better fit than the Log-normal distribution"
