@@ -45,13 +45,30 @@ beta.hat.mle <- mles$par[2]
 
 "(1.b)  Compute the MLEs for these data using the Log-Normal distribution"
 
+lllognormal <- function(data, par, neg=F) {
+  meanlog <- par[1]
+  sdlog <- par[2]
+  
+  loglik <- sum(log(dlnorm(x=data, meanlog=meanlog, sdlog=sdlog)))
+  
+  return(ifelse(neg, -loglik, loglik))
+}
 
+(mles <- optim(par = c(0, 1),
+               fn = lllognormal,
+               data=dat.precip.long$Precipitation,
+               neg=T))
 
+meanlog.hat.mle <- mles$par[1]
+sdlog.hat.mle <- mles$par[2]
 
 #########################################################################################################
 
 "(1.c)  Compute the likelihood ratio to compare the Weibull and the Gamma distribution.  
 Which has a better fit according to the likelhiood ratio?"
+
+
+
 
 
 
